@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.27)
+project(lib VERSION 0.0.1)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -s -DNDEBUG")
+elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Wextra -Wpedantic")
+endif ()
+
+add_subdirectory(lib)
+add_subdirectory(exec)
